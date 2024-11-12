@@ -48,7 +48,7 @@ pip install -r requirements.txt
 ### Datasets
 We train our model on MSR-VTT, DiDeMo and VATEX datasets respectively. Please refer to this [repo](https://github.com/ArrowLuo/CLIP4Clip) for data preparation.
 
-## How to Run
+### How to Run
 Download CLIP (ViT-B/32) weight,
 ```bash
 wget -P ./modules https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt
@@ -133,7 +133,7 @@ main_glccl.py --do_train --num_thread_reader=8 \
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/VATEX.jpg?raw=true)
 
 ## :bell: Failure Cases Visualization
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/visualization.jpg?raw=true)
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/Visualization.jpg?raw=true)
 
 ## Acknowledgments
 
