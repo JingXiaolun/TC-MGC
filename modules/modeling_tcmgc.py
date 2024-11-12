@@ -175,10 +175,10 @@ class TCMGC(CLIP4ClipPreTrainedModel):
         self.attentive_frame_word_mat_weight = nn.parameter.Parameter(torch.eye(attentive_num_words), requires_grad=True) 
         self.attentive_frame_word_mat_weight2 = nn.parameter.Parameter(torch.eye(attentive_num_words), requires_grad=True)
        
-        # determine var_loss
-        self.var_loss_flag = task_config.var_loss_flag
-        if self.var_loss_flag:
-            self.var_loss_weight = task_config.var_loss_weight
+        # determine sdr_loss
+        self.sdr_loss_flag = task_config.sdr_loss_flag
+        if self.sdr_loss_flag:
+            self.sdr_loss_weight = task_config.sdr_loss_weight
 
         self.loss_fct = CrossEn()
 
@@ -211,11 +211,11 @@ class TCMGC(CLIP4ClipPreTrainedModel):
             sim_loss = (sim_loss1 + sim_loss2) / 2
             loss += sim_loss
 
-            # calculating var loss
-            if self.var_loss_flag:
+            # calculating sdr loss
+            if self.sdr_loss_flag:
                 sim_matrix_ = torch.stack(sim_matrix_list)
-                var_loss = torch.mean(torch.diagonal(torch.var(sim_matrix_, dim=0)))  # using diagonal elements
-                loss += (self.var_loss_weight * var_loss)
+                sdr_loss = torch.mean(torch.diag(torch.var(sim_matrix_, dim=0)))  # using diagonal elements
+                loss += (self.sdr_loss_weight * sdr_loss)
             
             return loss  
         else:

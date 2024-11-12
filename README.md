@@ -76,7 +76,7 @@ main_tcmgc.py --do_train --num_thread_reader=8 \
 --datatype msrvtt --expand_msrvtt_sentences \
 --feature_framerate 1 --coef_lr 1e-3 \
 --freeze_layer_num 0  --slice_framepos 2 \
---conditional_flag --var_loss_flag \
+--conditional_flag --sdr_loss_flag \
 --loose_type --linear_patch 2d --sim_header seqTransf \
 --pretrained_clip_name ViT-B/32
 ```
@@ -96,7 +96,7 @@ main_glccl.py --do_train --num_thread_reader=8 \
 --datatype didemo \
 --feature_framerate 1 --coef_lr 1e-3 \
 --freeze_layer_num 0  --slice_framepos 2 \
---conditional_flag --var_loss_flag \
+--conditional_flag --sdr_loss_flag \
 --loose_type --linear_patch 2d --sim_header seqTransf \
 --pretrained_clip_name ViT-B/32
 ```
@@ -116,7 +116,7 @@ main_glccl.py --do_train --num_thread_reader=8 \
 --datatype vatex \
 --feature_framerate 1 --coef_lr 1e-3 \
 --freeze_layer_num 0  --slice_framepos 2 \
---conditional_flag --var_loss_flag \
+--conditional_flag --sdr_loss_flag \
 --loose_type --linear_patch 2d --sim_header seqTransf \
 --pretrained_clip_name ViT-B/32
 ```

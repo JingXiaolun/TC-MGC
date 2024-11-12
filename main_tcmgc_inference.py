@@ -14,7 +14,7 @@ import torch
 import numpy as np
 import random
 import os
-from metrics import compute_metrics, tensor_text_to_video_metrics, tensor_video_to_text_sim, save_t2v_retrieved_res, save_v2t_retrieved_res, save_t2v_metrics, save_v2t_metrics, save_vatex_t2v_metrics, save_vatex_v2t_metrics
+from metrics import compute_metrics, tensor_text_to_video_metrics, tensor_video_to_text_sim
 import time
 import datetime
 import argparse
@@ -79,8 +79,8 @@ def get_args(description='TCMGC on Retrieval Task'):
     parser.add_argument('--keep_rate', type=float, default=0.1, help='keep rate in video-word, sentence-frame and frame-word similarity aggregation')
     parser.add_argument('--softmax_lambda', type=float, default=100.0, choices=[1.0, 10.0, 100.0, 1000.0], help='temperature parameter in Softmax')
 
-    parser.add_argument('--var_loss_flag', action='store_true', help='whether to add var_loss for model optimization')
-    parser.add_argument('--var_loss_weight', type=float, default=0.5, help='weight of var loss')
+    parser.add_argument('--sdr_loss_flag', action='store_true', help='whether to add sdr loss for model optimization')
+    parser.add_argument('--sdr_loss_weight', type=float, default=0.5, help='weight of sdr loss')
  
     parser.add_argument('--num_mha_heads', type=int, default=1, help='Number of parallel heads in conditional multi-headed cross attention')
     parser.add_argument('--transformer_dropout', type=float, default=0.3, help='Dropout prob. in the transformer pooling')
@@ -309,31 +309,12 @@ def eval_model(model, args, test_dataloader, device, n_gpu):
 
         tv_metrics = tensor_text_to_video_metrics(sim_matrix)
         vt_metrics = compute_metrics(tensor_video_to_text_sim(sim_matrix))
-
-        save_vatex_t2v_metrics(sim_matrix)
-        save_vatex_v2t_metrics(tensor_video_to_text_sim(sim_matrix))
     else:
         print("sim matrix size: {}, {}".format(sim_matrix.shape[0], sim_matrix.shape[1]))
         
-        ################################### save sim_matrix into .npy #############################
-        #np.save('sim_matrix.npy', sim_matrix)     
-        ################################### save sim_matrix into .npy #############################
-
-        ################################### save retrieved results (T2V and V2T) into .json #############################
-        #save_t2v_retrieved_res(sim_matrix)
-        #save_v2t_retrieved_res(sim_matrix.T)
-        ################################### save retrieved results (T2V and V2T) into .json #############################
-
-        ################################### save metrics (T2V and V2T) into .json ######################################
-        save_t2v_metrics(sim_matrix)
-        save_v2t_metrics(sim_matrix.T) 
-        ################################### save metrics (T2V and V2T) into .json ######################################
-
         tv_metrics = compute_metrics(sim_matrix)
         vt_metrics = compute_metrics(sim_matrix.T)
         
-        #dsl_tv_metrics = compute_metrics(sim_matrix_dsl)
-        #dsl_vt_metrics = compute_metrics(sim_matrix_dsl.T)
         print('\t Length-T: {}, Length-V:{}'.format(len(sim_matrix), len(sim_matrix[0])))
   
     # output evaluation metrics
@@ -348,17 +329,6 @@ def eval_model(model, args, test_dataloader, device, n_gpu):
     print("T2V-V2T:")
     print('\t>>>  SumR: {:.1f}'.format(tv_metrics['R1'] + tv_metrics['R5'] + tv_metrics['R10'] + vt_metrics['R1'] + vt_metrics['R5'] + vt_metrics['R10']))
  
-    ## dsl output
-    #print("------------------------------------------------------------")
-    #print("DSL Text-to-Video:")
-    #print('\t>>>  R@1: {:.1f} - R@5: {:.1f} - R@10: {:.1f} - Median R: {:.1f} - Mean R: {:.1f} - RSum: {:.1f}'.
-    #       format(dsl_tv_metrics['R1'], dsl_tv_metrics['R5'], dsl_tv_metrics['R10'], dsl_tv_metrics['MR'], dsl_tv_metrics['MeanR'], dsl_tv_metrics['R1'] + dsl_tv_metrics['R5'] + dsl_tv_metrics['R10']))
-    #print("DSL Video-to-Text:")
-    #print('\t>>>  R@1: {:.1f} - R@5: {:.1f} - R@10: {:.1f} - Median R: {:.1f} - Mean R: {:.1f} - RSum: {:.1f}'.
-    #       format(dsl_vt_metrics['R1'], dsl_vt_metrics['R5'], dsl_vt_metrics['R10'], dsl_vt_metrics['MR'], dsl_vt_metrics['MeanR'], dsl_vt_metrics['R1'] + dsl_vt_metrics['R5'] + dsl_vt_metrics['R10']))
-    #print("DSL T2V-V2T:")
-    #print('\t>>>  SumR: {:.1f}'. format(dsl_tv_metrics['R1'] + dsl_tv_metrics['R5'] + dsl_tv_metrics['R10'] + dsl_vt_metrics['R1'] + dsl_vt_metrics['R5'] + dsl_vt_metrics['R10'])) 
-
 def main():
     args = get_args()
     args = set_seed_logger(args)

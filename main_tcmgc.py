@@ -107,8 +107,8 @@ def get_args(description='TCMGC on Retrieval Task'):
     parser.add_argument('--keep_rate', type=float, default=0.1, help='keep rate in video-word, sentence-frame and frame-word similarity aggregation')
     parser.add_argument('--softmax_lambda', type=float, default=100.0, choices=[1.0, 10.0, 100.0, 1000.0], help='temperature parameter in Softmax')
 
-    parser.add_argument('--var_loss_flag', action='store_true', help='whether to add var_loss for model optimization')
-    parser.add_argument('--var_loss_weight', type=float, default=0.5, help='weight of var loss')
+    parser.add_argument('--sdr_loss_flag', action='store_true', help='whether to add sdr loss for model optimization')
+    parser.add_argument('--sdr_loss_weight', type=float, default=0.5, help='weight of sdr loss')
     
     parser.add_argument('--num_mha_heads', type=int, default=1, help='Number of parallel heads in conditional multi-headed cross attention')
     parser.add_argument('--transformer_dropout', type=float, default=0.3, help='Dropout prob. in the transformer pooling')
