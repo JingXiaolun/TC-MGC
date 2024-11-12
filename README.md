@@ -13,6 +13,8 @@ Motivated by the success of coarse-grained or fine-grained contrast in text-vide
 Fig. 1. Illustration of the multi-grained contrasts between frame and sentence (word) representations, including sentence-frame (crossgrained) and frame-word (fine-grained) contrasts. The arrows indicate that the texts are semantic-relevant to sub-regions of videos.
 
 ## :herb: Method
+
+### Framework
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/main_structure.jpg?raw=true)
 Fig. 2. The pipeline of TC-MGC. Given pair-wise text-video data, CLIP encoders simultaneously extract textual and visual representations, of which the extracted frame features are fed into the temporal encoder block for sequential modeling. Through language-video attention block, video representations with different granularity are regenerated in a text-guided manner. Finally, multi-grained interaction is implemented on the textual representations and text-conditioned visual representations to obtain the similarity score.
 
@@ -60,52 +62,78 @@ Then, run
 **MSR-VTT**
 
 ```bash
-# ViT-B/32
-sh scripts/run_xclip_msrvtt_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_msrvtt_vit16.sh
-```
-
-**MSVD**
-
-```bash
-# ViT-B/32
-sh scripts/run_xclip_msvd_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_msvd_vit16.sh
-```
-
-**LSMDC**
-
-```bash
-# ViT-B/32
-sh scripts/run_xclip_lsmdc_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_lsmdc_vit16.sh
+python -m torch.distributed.launch --nproc_per_node=4 --master_port='30500' \
+main_tcmgc.py --do_train --num_thread_reader=8 \
+--epochs=5 --batch_size=128 --batch_size_val 64 --n_display=50 \
+--train_csv ${FILE_DATA_PATH}/MSRVTT_train.9k.csv \
+--val_csv ../DataSet/MSRVTT/data/file/MSRVTT_JSFUSION_test.csv \
+--data_path ../DataSet/MSRVTT/data/file/MSRVTT_data.json \
+--features_path ../DataSet/MSRVTT/data/file/clip4clip_video_frame_input \
+--output_dir ../Model/tcmgc_msrvtt_vit32 \
+--log_dir ../Log/tcmgc_msrvtt_vit32 \
+--visualize_dir ../Visualize/tcmgc_msrvtt_vit32 \
+--lr 1e-4 --max_words 32 --max_frames 12 \
+--datatype msrvtt --expand_msrvtt_sentences \
+--feature_framerate 1 --coef_lr 1e-3 \
+--freeze_layer_num 0  --slice_framepos 2 \
+--conditional_flag --var_loss_flag \
+--loose_type --linear_patch 2d --sim_header seqTransf \
+--pretrained_clip_name ViT-B/32
 ```
 
 **DiDeMo**
 
 ```bash
-# ViT-B/32
-sh scripts/run_xclip_didemo_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_didemo_vit16.sh
+python -m torch.distributed.launch --nproc_per_node=8 --master_port='30501' \
+main_glccl.py --do_train --num_thread_reader=8 \
+--epochs=20 --batch_size=64 --batch_size_val 32 --n_display=50 \
+--data_path ../DataSet/DiDeMo/data/compressed/split_file \
+--features_path ../DataSet/DiDeMo/data/compressed/split_video \
+--output_dir ../Model/tcmgc_didemo_vit32 \
+--log_dir ../Log/tcmgc_didemo_vit32 \
+--visualize_dir ../Visualize/tcmgc_didemo_vit32 \
+--lr 1e-4 --max_words 64 --max_frames 64 \
+--datatype didemo \
+--feature_framerate 1 --coef_lr 1e-3 \
+--freeze_layer_num 0  --slice_framepos 2 \
+--conditional_flag --var_loss_flag \
+--loose_type --linear_patch 2d --sim_header seqTransf \
+--pretrained_clip_name ViT-B/32
 ```
 
-**ActivityNet**
+**VATEX**
 
 ```bash
-# ViT-B/32
-sh scripts/run_xclip_actnet_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_actnet_vit16.sh
+python -m torch.distributed.launch --nproc_per_node=4 --master_port='30502' \
+main_glccl.py --do_train --num_thread_reader=8 \
+--epochs=5 --batch_size=128 --batch_size_val 128 --n_display=50 \
+--data_path ../DataSet/VATEX/data/compressed/split_file \
+--features_path ../DataSet/VATEX/data/compressed/clip4clip_video_frame_input \
+--output_dir ../Model/tcmgc_vatex_vit32 \
+--log_dir ../Log/tcmgc_vatex_vit32 \
+--visualize_dir ../Visualize/tcmgc_vatex_vit32 \
+--lr 1e-4 --max_words 32 --max_frames 12 \
+--datatype vatex \
+--feature_framerate 1 --coef_lr 1e-3 \
+--freeze_layer_num 0  --slice_framepos 2 \
+--conditional_flag --var_loss_flag \
+--loose_type --linear_patch 2d --sim_header seqTransf \
+--pretrained_clip_name ViT-B/32
 ```
+
+## :telescope: Experiments
+
+### MSR-VTT
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/MSRVTT.jpg?raw=true)
+
+### DiDeMo
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/DiDeMo.jpg?raw=true)
+
+### VATEX
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/VATEX.jpg?raw=true)
+
+## :bell: Failure Cases Visualization
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/visualization.jpg?raw=true)
 
 ## Acknowledgments
 
