@@ -128,11 +128,11 @@ class ActivityNet_DataLoader(Dataset):
         k = 1
         r_ind = [sub_id]
 
-        starts = np.zeros(k, dtype=np.long)
-        ends = np.zeros(k, dtype=np.long)
-        pairs_text = np.zeros((k, self.max_words), dtype=np.long)
-        pairs_mask = np.zeros((k, self.max_words), dtype=np.long)
-        pairs_segment = np.zeros((k, self.max_words), dtype=np.long)
+        starts = np.zeros(k, dtype=int)
+        ends = np.zeros(k, dtype=int)
+        pairs_text = np.zeros((k, self.max_words), dtype=int)
+        pairs_mask = np.zeros((k, self.max_words), dtype=int)
+        pairs_segment = np.zeros((k, self.max_words), dtype=int)
 
         for i in range(k):
             ind = r_ind[i]
@@ -164,12 +164,12 @@ class ActivityNet_DataLoader(Dataset):
         return pairs_text, pairs_mask, pairs_segment, starts, ends
 
     def _get_rawvideo(self, idx, s, e):
-        video_mask = np.zeros((len(s), self.max_frames), dtype=np.long)
+        video_mask = np.zeros((len(s), self.max_frames), dtype=int)
         max_video_length = [0] * len(s)
 
         # Pair x L x T x 3 x H x W
         video = np.zeros((len(s), self.max_frames, 1, 3,
-                          self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float)
+                          self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=float)
         video_path = self.video_dict[idx]
         #video_path_npz = video_path.replace('split_video', 'clip4clip_video_frame_input') + 'npz'
         try:

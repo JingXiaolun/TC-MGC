@@ -52,9 +52,9 @@ class MSRVTT_DataLoader(Dataset):
         n_caption = len(choice_video_ids)
 
         k = n_caption
-        pairs_text = np.zeros((k, self.max_words), dtype=np.long)
-        pairs_mask = np.zeros((k, self.max_words), dtype=np.long)
-        pairs_segment = np.zeros((k, self.max_words), dtype=np.long)
+        pairs_text = np.zeros((k, self.max_words), dtype=int)
+        pairs_mask = np.zeros((k, self.max_words), dtype=int)
+        pairs_segment = np.zeros((k, self.max_words), dtype=int)
 
         for i, video_id in enumerate(choice_video_ids):
             words = self.tokenizer.tokenize(sentence)
@@ -83,12 +83,12 @@ class MSRVTT_DataLoader(Dataset):
         return pairs_text, pairs_mask, pairs_segment, choice_video_ids
 
     def _get_rawvideo(self, choice_video_ids):
-        video_mask = np.zeros((len(choice_video_ids), self.max_frames), dtype=np.long)
+        video_mask = np.zeros((len(choice_video_ids), self.max_frames), dtype=int)
         max_video_length = [0] * len(choice_video_ids)
 
         # Pair x L x T x 3 x H x W
         video = np.zeros((len(choice_video_ids), self.max_frames, 1, 3,
-                          self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float)
+                          self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=float)
 
         for i, video_id in enumerate(choice_video_ids):
             # Individual for YoucokII dataset, due to it video format
@@ -212,9 +212,9 @@ class MSRVTT_TrainDataLoader(Dataset):
     def _get_text(self, video_id, caption=None):
         k = 1
         choice_video_ids = [video_id]
-        pairs_text = np.zeros((k, self.max_words), dtype=np.long)
-        pairs_mask = np.zeros((k, self.max_words), dtype=np.long)
-        pairs_segment = np.zeros((k, self.max_words), dtype=np.long)
+        pairs_text = np.zeros((k, self.max_words), dtype=int)
+        pairs_mask = np.zeros((k, self.max_words), dtype=int)
+        pairs_segment = np.zeros((k, self.max_words), dtype=int)
 
         for i, video_id in enumerate(choice_video_ids):
             if caption is not None:
@@ -252,12 +252,12 @@ class MSRVTT_TrainDataLoader(Dataset):
         return words
 
     def _get_rawvideo(self, choice_video_ids):
-        video_mask = np.zeros((len(choice_video_ids), self.max_frames), dtype=np.long)
+        video_mask = np.zeros((len(choice_video_ids), self.max_frames), dtype=int)
         max_video_length = [0] * len(choice_video_ids)
 
         # Pair x L x T x 3 x H x W
         video = np.zeros((len(choice_video_ids), self.max_frames, 1, 3,
-                          self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float)
+                          self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=float)
 
         for i, video_id in enumerate(choice_video_ids):
             # Individual for YoucokII dataset, due to it video format
