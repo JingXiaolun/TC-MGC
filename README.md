@@ -47,6 +47,13 @@ pip install -r requirements.txt
 ```
 ### Datasets
 We train our model on MSR-VTT, DiDeMo and VATEX datasets respectively. Please refer to this [repo](https://github.com/ArrowLuo/CLIP4Clip) for data preparation.
+“`markdown
+| Datasets    | Google Cloud    | Baidu Yun | Peking University Yun|
+|——|——|—–|—–|
+| MSR-VTT  | [Download](https://drive.google.com/drive/folders/1LYVUCPRxpKMRjCSfB_Gz-ugQa88FqDu_)  | 内容3 |
+| DiDeMo  | 内容5  | 内容6 |
+| VATEX  | 内容5  | 内容6 
+“`
 
 ### How to Run
 Download CLIP (ViT-B/32) weight,
