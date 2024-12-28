@@ -47,13 +47,12 @@ pip install -r requirements.txt
 ```
 ### Datasets
 We train our model on MSR-VTT, DiDeMo and VATEX datasets respectively. Please refer to this [repo](https://github.com/ArrowLuo/CLIP4Clip) for data preparation.
-“`markdown
-| Datasets    | Google Cloud    | Baidu Yun | Peking University Yun|
-|——|——|—–|—–|
-| MSR-VTT  | [Download](https://drive.google.com/drive/folders/1LYVUCPRxpKMRjCSfB_Gz-ugQa88FqDu_)  | 内容3 |
-| DiDeMo  | 内容5  | 内容6 |
-| VATEX  | 内容5  | 内容6 
-“`
+
+| Datasets  | Google Cloud    | Baidu Yun | Peking University Yun|
+|------|------|------|------|
+| MSR-VTT  | [Download](https://drive.google.com/drive/folders/1LYVUCPRxpKMRjCSfB_Gz-ugQa88FqDu_)  | [Download](https://pan.baidu.com/share/init?surl=Gdf6ivybZkpua5z1HsCWRA&pwd=enav) | [Download](https://disk.pku.edu.cn/anyshare/zh-cn/link/AA6A028EE7EF5C48A788118B82D6ABE0C5?_tb=none&expires_at=1970-01-01T08%3A00%3A00%2B08%3A00&item_type=folder&password_required=false&title=MSRVTT&type=anonymous) |
+| DiDeMo  | TODO  | [Download](https://pan.baidu.com/share/init?surl=Tsy9nb1hWzeXaZ4xr7qoTg&pwd=c842) | [Download](https://disk.pku.edu.cn/anyshare/zh-cn/link/AA14E48D1333114022B736291D60350FA5?_tb=none&expires_at=1970-01-01T08%3A00%3A00%2B08%3A00&item_type=folder&password_required=false&title=didemo&type=anonymous) |
+| VATEX  | TODO  | TODO | TODO |
 
 ### How to Run
 Download CLIP (ViT-B/32) weight,
