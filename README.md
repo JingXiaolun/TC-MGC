@@ -7,10 +7,10 @@ This is the official code implementation of the paper "TC-MGC: Text-Conditioned 
 We are continuously refactoring our code, be patient and wait for the latest updates!
 
 ## :star: Overview
-Motivated by the success of coarse-grained or fine-grained contrast in text-video retrieval, there emerge multi-grained contrastive learning methods which focus on the integration of contrasts with different granularity. However, due to the wider semantic range of videos, the text-agnostic video representations might encode misleading information not described in texts, thus impeding the model from capturing precise cross-modal semantic correspondence. To this end, we propose a TextConditioned Multi-Grained Contrast framework, dubbed TC-MGC. Specifically, our model employs a language-video attention block to generate aggregated frame and video representations conditioned on the word’s and text’s attention weights over frames. To filter unnecessary similarity interactions and decrease trainable parameters in the Interactive Similarity Aggregation (ISA) module, we design a Similarity Reorganization (SR) module to identify attentive similarities and reorganize cross-modal similarity vectors and matrices. Next, we argue that the imbalance problem among multi-grained similarities may result in over- and under-representation issues. We thereby introduce an auxiliary Similarity Decorrelation Regularization (SDR) loss to facilitate cooperative relationship utilization by similarity variance minimization on matching text-video pairs. Finally, we present a Linear Softmax Aggregation (LSA) module to explicitly encourage the interactions between multiple similarities and promote the usage of multi-grained information. Empirically, TC-MGC achieves competitive results on multiple text-video retrieval benchmarks, outperforming X-CLIP model by +2.8% (+1.3%), +2.2% (+1.0%), +1.5% (+0.9%) relative (absolute) improvements in text-to-video retrieval R@1 on MSRVTT, DiDeMo and VATEX, respectively.
+Motivated by the success of coarse-grained or fine-grained contrast in text-video retrieval, there emerge multi-grained contrastive learning methods which focus on the integration of contrasts with different granularity. However, due to the wider semantic range of videos, the text-agnostic video representations might encode misleading information not described in texts, thus impeding the model from capturing precise cross-modal semantic correspondence. To this end, we propose a Text-Conditioned Multi-Grained Contrast framework, dubbed TC-MGC. Specifically, our model employs a language-video attention block to generate aggregated frame and video representations conditioned on the word's and text's attention weights over frames. To filter unnecessary similarity interactions and decrease trainable parameters in the Interactive Similarity Aggregation (ISA) module, we design a Similarity Reorganization (SR) module to identify attentive similarities and reorganize cross-modal similarity vectors and matrices. Next, we argue that the imbalance problem among multi-grained similarities may result in over- and under-representation issues. We thereby introduce an auxiliary Similarity Decorrelation Regularization (SDR) loss to facilitate cooperative relationship utilization by similarity variance minimization on matching text-video pairs. Finally, we present a Linear Softmax Aggregation (LSA) module to explicitly encourage the interactions between multiple similarities and promote the usage of multi-grained information. Empirically, TC-MGC achieves competitive results on multiple text-video retrieval benchmarks, outperforming X-CLIP model by +2.8% (+1.3%), +2.2% (+1.0%), +1.5% (+0.9%) relative (absolute) improvements in text-to-video retrieval R@1 on MSR-VTT, DiDeMo and VATEX, respectively. 
 
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/sen_frame_and_word_frame_contrast.jpg?raw=true)
-Fig. 1. Illustration of the multi-grained contrasts between frame and sentence (word) representations, including sentence-frame (crossgrained) and frame-word (fine-grained) contrasts. The arrows indicate that the texts are semantic-relevant to sub-regions of videos.
+Fig. 1. Illustration of the multi-grained contrasts between frame and sentence (word) representations, including sentence-frame (cross-grained) and frame-word (fine-grained) contrasts. The connections indicate that the texts are semantic-relevant to sub-regions of videos.
 
 ## :herb: Method
 
@@ -130,15 +130,15 @@ main_glccl.py --do_train --num_thread_reader=8 \
 ## :telescope: Experiments
 
 ### MSR-VTT
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/MSRVTT.jpg?raw=true)
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/MSRVTT.png?raw=true)
 
 ### DiDeMo
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/DiDeMo.jpg?raw=true)
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/DiDeMo.png?raw=true)
 
 ### VATEX
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/VATEX.jpg?raw=true)
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/VATEX.png?raw=true)
 
-## :bell: Failure Cases Visualization
+## :bell: Text-to-Video Retrieval Results Visualization
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/Visualization.jpg?raw=true)
 
 ## Acknowledgments
