@@ -2,7 +2,7 @@
 
 [Xiaolun Jing](https://scholar.google.com/citations?hl=zh-CN&user=LsozN5kAAAAJ), Genke Yang, Jian Chu
 
-This is the official code implementation of the paper "TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval", the checkpoint will be released soon.
+The implementation of paper [TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval](https://www.sciencedirect.com/science/article/pii/S1566253525002246). Accepted by Information Fusion. By [Xiaolun Jing](https://scholar.google.com/citations?hl=zh-CN&user=LsozN5kAAAAJ), Genke Yang, Jian Chu.
 
 We are continuously refactoring our code, be patient and wait for the latest updates!
 
@@ -141,6 +141,19 @@ main_glccl.py --do_train --num_thread_reader=8 \
 ## :bell: Text-to-Video Retrieval Results Visualization
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/Visualization.jpg?raw=true)
 
-## Acknowledgments
+## :pushpin: Citation
+If you find our method useful in your work, please cite:
+```bibtex
+@article{jing2025tc,
+  title={TC-MGC: Text-conditioned multi-grained contrastive learning for text-video retrieval},
+  author={Jing, Xiaolun and Yang, Genke and Chu, Jian},
+  journal={Information Fusion},
+  pages={103151},
+  year={2025},
+  publisher={Elsevier}
+}
+```
 
-The implementation of TC-MGC relies on resources from [X-CLIP](https://github.com/xuguohai/X-CLIP "X-CLIP") and [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip "CLIP4Clip"). We thank the original authors for their open-sourcing.
+## :reminder_ribbon: Acknowledgments
+
+Our code is based on  [X-CLIP](https://github.com/xuguohai/X-CLIP "X-CLIP") and [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip "CLIP4Clip"). We thank the original authors for their open-sourcing.
