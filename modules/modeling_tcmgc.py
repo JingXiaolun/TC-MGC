@@ -139,7 +139,6 @@ class TCMGC(CLIP4ClipPreTrainedModel):
 
         # ->>> determine conditional module params
         self.conditional_flag = task_config.conditional_flag
-        self.ratio = task_config.ratio
         if self.conditional_flag:
             self.embed_dim = embed_dim
             self.num_mha_heads = task_config.num_mha_heads
@@ -157,7 +156,10 @@ class TCMGC(CLIP4ClipPreTrainedModel):
 
         # for fine-grained constrast weights
         self.local_mat_weight = nn.parameter.Parameter(torch.eye(embed_dim), requires_grad=True)
-      
+     
+        # for linear softmax logits weights
+        self.logit_weight = nn.parameter.Parameter(torch.eye(len(self.interaction_type)), requires_grad=True)
+
         #>>> attentive mechanism settings
         self.keep_rate = task_config.keep_rate
         attentive_num_words = int(num_words * self.keep_rate)
@@ -297,12 +299,6 @@ class TCMGC(CLIP4ClipPreTrainedModel):
                 sub_fine_visual_output = self.conditional_transformer.pool_frames(text_embeds, video_embeds, video_mask).unsqueeze(1)
                 fine_visual_output = torch.cat([fine_visual_output, sub_fine_visual_output], dim=1)
 
-        # adjust the shape of fine_visual_output to num_frames instead of num_words ([bs_text, bs_video, dim, num_words] -> [bs_text, bs_video, dim, num_frames] -> [bs_text, num_frames, bs_video, dim])
-        if self.frame_features_conversion_flag: 
-            fine_visual_output = self.frame_features_conversion_layer(fine_visual_output.permute(0, 2, 3, 1).contiguous()).permute(0, 3, 1, 2).contiguous()
-            assert fine_visual_output.shape[1]==self.task_config.max_frames, 'the shape corresponding to dimension 1 must be equal to number of frames'
-      
-        #fine_visual_output = visual_output
         return (coarse_visual_output, fine_visual_output)
 
     def _get_cross_output(self, sequence_output, visual_output, attention_mask, video_mask):
