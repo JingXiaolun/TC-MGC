@@ -1,8 +1,8 @@
 # TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval
 
-[![Information Fusion](https://img.shields.io/badge/2025-yellow.svg)](https://doi.org/10.1016/j.inffus.2025.103151)
+[![Information Fusion](https://img.shields.io/badge/Information Fusion-2025-yellow.svg)](https://doi.org/10.1016/j.inffus.2025.103151)
 
-[![Paper](https://img.shields.io/badge/arxiv.2504.04707-b31b1b.svg)](https://arxiv.org/abs/2504.04707)
+[![Paper](https://img.shields.io/badge/Paper-arxiv.2504.04707-b31b1b.svg)](https://arxiv.org/abs/2504.04707)
 
 The implementation of paper [TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval](https://www.sciencedirect.com/science/article/pii/S1566253525002246). Accepted by Information Fusion. By [Xiaolun Jing](https://scholar.google.com/citations?hl=zh-CN&user=LsozN5kAAAAJ), Genke Yang, Jian Chu.
 
