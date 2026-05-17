@@ -3,7 +3,6 @@
 <p align="center">
     <a href="https://doi.org/10.1016/j.inffus.2025.103151">
     <img src="https://img.shields.io/badge/INFFUS-2025-yellow.svg" alt="Build Status">
-    
     </a>
     <a href="https://arxiv.org/abs/2504.04707">
     <img src="https://img.shields.io/badge/Paper-arxiv.2504.04707-b31b1b.svg" alt="Build Status">
