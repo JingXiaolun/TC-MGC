@@ -41,8 +41,8 @@ to obtain the sentence-frame Score from the reorganized sentenceframe vector. (c
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/LSA.jpg?raw=true)
 Fig. 7. The overview of LSA, which leverages the cascade of linear and softmax layers to calculate the weights of different instance-level scores.
 
-## :mag: Usage
-### Requirement
+## :rocket: Quick Start
+### Setup code environment
 ```bash
 pip install -r requirements.txt
 ```
