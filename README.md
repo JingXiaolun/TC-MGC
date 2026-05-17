@@ -114,20 +114,6 @@ main_glccl.py --do_train --num_thread_reader=8 \
 --pretrained_clip_name ViT-B/32
 ```
 
-## :telescope: Experiments
-
-### MSR-VTT
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/MSRVTT.png?raw=true)
-
-### DiDeMo
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/DiDeMo.png?raw=true)
-
-### VATEX
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/VATEX.png?raw=true)
-
-## :heart_eyes: Visualization
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/Visualization.jpg?raw=true)
-
 ## :reminder_ribbon: Acknowledgments
 
 Our code is based on  [X-CLIP](https://github.com/xuguohai/X-CLIP "X-CLIP") and [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip "CLIP4Clip"). We thank the original authors for their open-sourcing.
