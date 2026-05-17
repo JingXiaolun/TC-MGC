@@ -5,6 +5,19 @@
 
 The implementation of INFFUS 2025 paper [TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval](https://arxiv.org/abs/2504.04707). 
 
+## :pushpin: Citation
+If you find our method useful in your work, please cite:
+```bibtex
+@article{jing2025tc,
+  title={TC-MGC: Text-conditioned multi-grained contrastive learning for text-video retrieval},
+  author={Jing, Xiaolun and Yang, Genke and Chu, Jian},
+  journal={Information Fusion},
+  pages={103151},
+  year={2025},
+  publisher={Elsevier}
+}
+```
+
 ## :star: Overview
 Motivated by the success of coarse-grained or fine-grained contrast in text-video retrieval, there emerge multi-grained contrastive learning methods which focus on the integration of contrasts with different granularity. However, due to the wider semantic range of videos, the text-agnostic video representations might encode misleading information not described in texts, thus impeding the model from capturing precise cross-modal semantic correspondence. To this end, we propose a Text-Conditioned Multi-Grained Contrast framework, dubbed TC-MGC. Specifically, our model employs a language-video attention block to generate aggregated frame and video representations conditioned on the word's and text's attention weights over frames. To filter unnecessary similarity interactions and decrease trainable parameters in the Interactive Similarity Aggregation (ISA) module, we design a Similarity Reorganization (SR) module to identify attentive similarities and reorganize cross-modal similarity vectors and matrices. Next, we argue that the imbalance problem among multi-grained similarities may result in over- and under-representation issues. We thereby introduce an auxiliary Similarity Decorrelation Regularization (SDR) loss to facilitate cooperative relationship utilization by similarity variance minimization on matching text-video pairs. Finally, we present a Linear Softmax Aggregation (LSA) module to explicitly encourage the interactions between multiple similarities and promote the usage of multi-grained information. Empirically, TC-MGC achieves competitive results on multiple text-video retrieval benchmarks, outperforming X-CLIP model by +2.8% (+1.3%), +2.2% (+1.0%), +1.5% (+0.9%) relative (absolute) improvements in text-to-video retrieval R@1 on MSR-VTT, DiDeMo and VATEX, respectively. 
 
@@ -139,19 +152,6 @@ main_glccl.py --do_train --num_thread_reader=8 \
 
 ## :bell: Text-to-Video Retrieval Results Visualization
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/Visualization.jpg?raw=true)
-
-## :pushpin: Citation
-If you find our method useful in your work, please cite:
-```bibtex
-@article{jing2025tc,
-  title={TC-MGC: Text-conditioned multi-grained contrastive learning for text-video retrieval},
-  author={Jing, Xiaolun and Yang, Genke and Chu, Jian},
-  journal={Information Fusion},
-  pages={103151},
-  year={2025},
-  publisher={Elsevier}
-}
-```
 
 ## :reminder_ribbon: Acknowledgments
 
