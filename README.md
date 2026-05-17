@@ -41,18 +41,17 @@ We train our model on MSR-VTT, DiDeMo and VATEX datasets respectively. Please re
 | DiDeMo  | TODO  | [Download](https://pan.baidu.com/share/init?surl=Tsy9nb1hWzeXaZ4xr7qoTg&pwd=c842) | [Download](https://disk.pku.edu.cn/anyshare/zh-cn/link/AA14E48D1333114022B736291D60350FA5?_tb=none&expires_at=1970-01-01T08%3A00%3A00%2B08%3A00&item_type=folder&password_required=false&title=didemo&type=anonymous) |
 | VATEX  | TODO  | TODO | TODO |
 
-### How to Run
-Download CLIP (ViT-B/32) weight,
+### Download CLIP Model
 ```bash
 wget -P ./modules https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt
-```
-or, download CLIP (ViT-B/16) weight,
-```bash 
 wget -P ./modules https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt
 ```
-Then, run
+### Compress Video
+```bash
+python preprocess/compress_video.py --input_root [raw_video_path] --output_root [compressed_video_path]
+```
 
-**MSR-VTT**
+### Train on MSR-VTT
 
 ```bash
 python -m torch.distributed.launch --nproc_per_node=4 --master_port='30500' \
@@ -74,7 +73,7 @@ main_tcmgc.py --do_train --num_thread_reader=8 \
 --pretrained_clip_name ViT-B/32
 ```
 
-**DiDeMo**
+### Train on DiDeMo
 
 ```bash
 python -m torch.distributed.launch --nproc_per_node=8 --master_port='30501' \
@@ -94,8 +93,7 @@ main_glccl.py --do_train --num_thread_reader=8 \
 --pretrained_clip_name ViT-B/32
 ```
 
-**VATEX**
-
+### Train on VATEX
 ```bash
 python -m torch.distributed.launch --nproc_per_node=4 --master_port='30502' \
 main_glccl.py --do_train --num_thread_reader=8 \
