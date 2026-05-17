@@ -1,4 +1,4 @@
-# 【INFFUS'2025 :fire: 】TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval
+# 【INFFUS'2025 :fire:】TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval
 
 [![INFFUS](https://img.shields.io/badge/INFFUS-2025-yellow.svg)](https://doi.org/10.1016/j.inffus.2025.103151)
 [![Paper](https://img.shields.io/badge/Paper-arxiv.2504.04707-b31b1b.svg)](https://arxiv.org/abs/2504.04707)
