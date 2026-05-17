@@ -1,6 +1,6 @@
 # TC-MGC: Text-Conditioned Multi-Grained Contrastive Learning for Text-Video Retrieval
 
-[![Information Fusion](https://img.shields.io/badge/Information Fusion-2025-yellow.svg)](https://doi.org/10.1016/j.inffus.2025.103151)
+[![Information Fusion](https://img.shields.io/badge/INFFUS-2025-yellow.svg)](https://doi.org/10.1016/j.inffus.2025.103151)
 
 [![Paper](https://img.shields.io/badge/Paper-arxiv.2504.04707-b31b1b.svg)](https://arxiv.org/abs/2504.04707)
 
