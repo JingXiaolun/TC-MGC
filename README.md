@@ -150,7 +150,7 @@ main_glccl.py --do_train --num_thread_reader=8 \
 ### VATEX
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/VATEX.png?raw=true)
 
-## :bell: Text-to-Video Retrieval Results Visualization
+## :heart_eyes: Visualization
 ![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/Visualization.jpg?raw=true)
 
 ## :reminder_ribbon: Acknowledgments
