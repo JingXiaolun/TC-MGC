@@ -24,12 +24,12 @@ If you find our method useful in your work, please cite:
 <details open>
 <summary>:bulb:  I also have other text-video retrieval projects that may interest you :sparkles:.</summary>
 
-> [An Empirical Study of Excitation and Aggregation Design Adaptions in CLIP4Clip for Video–Text Retrieval](https://arxiv.org/pdf/2406.01604)
-> Accepted by NeurCom 2024 | [EA-CLIP4Clip Code](https://github.com/JingXiaolun/EA-CLIP4Clip)
+> [An Empirical Study of Excitation and Aggregation Design Adaptions in CLIP4Clip for Video–Text Retrieval](https://arxiv.org/pdf/2406.01604)  
+> Accepted by NeurCom 2024 | [EA-CLIP4Clip Code](https://github.com/JingXiaolun/EA-CLIP4Clip)  
 > Xiaolun Jing, Genke Yang, Jian Chu
 
-> [Text-Video Retrieval With Global-Local Contrastive Consistency Learning](https://doi.org/10.1109/CAC67268.2025.11487249)
-> Accepted by CAC 2025 | [GLCCL Code](https://github.com/JingXiaolun/GLCCL)
+> [Text-Video Retrieval With Global-Local Contrastive Consistency Learning](https://doi.org/10.1109/CAC67268.2025.11487249)  
+> Accepted by CAC 2025 | [GLCCL Code](https://github.com/JingXiaolun/GLCCL)  
 > Xiaolun Jing, Genke Yang, Jian Chu
 
 </details>
