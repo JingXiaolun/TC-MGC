@@ -26,7 +26,7 @@ Motivated by the success of coarse-grained or fine-grained contrast in text-vide
 
 ## :books: Method
 
-![image](https://github.com/JingXiaolun/TC-MGC/blob/master/image/main_structure.jpg?raw=true)
+![image](https://github.com/JingXiaolun/TC-MGC/blob/master/static/images/main_structure.jpg?raw=true)
 
 ## :rocket: Quick Start
 ### Setup code environment
