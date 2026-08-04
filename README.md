@@ -32,8 +32,8 @@ If you find our method useful in your work, please cite:
 > Accepted by CAC 2025 | [GLCCL Code](https://github.com/JingXiaolun/GLCCL)  
 > Xiaolun Jing, Genke Yang, Jian Chu
 
-> [PHA-Net: Prototype-based Hierarchical Alignment  Network for Text-Video Retrieval](https://arxiv.org/pdf/2608.00551)
-> Accepted by NeurCom 2026 | [PHA-Net Code](https://github.com/JingXiaolun/PHA-Net)
+> [PHA-Net: Prototype-based Hierarchical Alignment  Network for Text-Video Retrieval](https://arxiv.org/pdf/2608.00551)  
+> Accepted by NeurCom 2026 | [PHA-Net Code](https://github.com/JingXiaolun/PHA-Net)  
 > Xiaolun Jing, Kezhao Yin, Xinxing Yang, Genke Yang, Jian Chu
 
 </details>
